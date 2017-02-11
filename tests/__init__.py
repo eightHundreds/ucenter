@@ -1,0 +1,3 @@
+TEST_USERNAME='bbdbbbbp'
+TEST_PSW='123456'
+TEST_EMAIL='1@qq.com'

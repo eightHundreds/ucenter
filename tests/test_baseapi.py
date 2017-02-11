@@ -1,8 +1,10 @@
-import unittest
-from unittest import TestCase
-from api import *
-import xmltodict
 import  json
+from unittest import TestCase
+
+import xmltodict
+
+from ucenter_api.clients import *
+
 
 class TestBaseapi(TestCase):
     def setUp(self):

@@ -1,5 +1,7 @@
 from unittest import TestCase
-from util import *
+
+from ucenter_api.util import *
+
 
 class TestUtil(TestCase):
     def test_MD5(self):

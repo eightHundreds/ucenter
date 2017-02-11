@@ -1,9 +1,8 @@
-from config import Config
-import hashlib
-import random
 import base64
+import hashlib
 from datetime import datetime
-from functools import reduce
+
+from ucenter_api.config import Config
 
 
 class Util():
@@ -132,4 +131,25 @@ class Util():
     @classmethod
     def base64decode_tostr(self,data):
         return base64.b64encode(data).decode(Config.UC_CHARSET)
+    @classmethod
+    def uc_dict2my_dict(self, properties, uc_dic):
+        """
+        把ucenter返回的简单数据重封装,仅限简单的单条数据
+        :param properties:
+        :param uc_dic:
+        :return:
+        """
+        if not uc_dic or not properties:
+            raise ValueError('参数不能为空')
+        if uc_dic.get('item')==None or len(uc_dic.get('item'))==0:
+            return {}
 
+        result={}
+        """
+        {"item": [{"@id": "0", "#text": "1"}, {"@id": "1", "#text": "bbdbbbbp"}, {"@id": "2", "#text": "1@qq.com"}]}
+        """
+        for (i,j) in zip(uc_dic.get('item'),properties):
+            result.update({
+                j:i.get('#text')
+            })
+        return result
