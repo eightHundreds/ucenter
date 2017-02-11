@@ -18,7 +18,7 @@ class UcenterError(Exception):
             'Module not found!',
             'Action not found!')
 
-class baseapi():
+class BaseApi():
     get_url=urljoin(Config.UC_API_URL,"index.php")
     def get_args(self, model, action,**param):
         """
@@ -116,7 +116,7 @@ class baseapi():
         action = splited_method_name[2]
         return module,action
 
-class userapi(baseapi):
+class UserApi(BaseApi):
 
     def uc_get_user(self,username,isuid=0):#特殊的
         """
@@ -203,7 +203,7 @@ class userapi(baseapi):
             return (UserLoginResult.Success,parsed_result)
         else:
             return (UserLoginResult(int(parsed_result.get('uid'))),)
-    @baseapi.decorator(False)
+    @BaseApi.decorator(False)
     def uc_user_synlogin(self,uid):
         """
         同步登入,确保在后台设置该应用允许同步登入
@@ -212,7 +212,7 @@ class userapi(baseapi):
         """
         pass
 
-    @baseapi.decorator(False)
+    @BaseApi.decorator(False)
     def uc_user_synlogout(self):
         pass
     def uc_user_checkemail(self,email):
@@ -244,12 +244,11 @@ class userapi(baseapi):
         result = self.post(module, action, **param)
         return UserNameCheckResult(int(result))
 
-
-class pmapi(baseapi):
-    @baseapi.decorator(is_parse=False)
+class PmApi(BaseApi):
+    @BaseApi.decorator(is_parse=False)
     def uc_pm_sendpm(self,fromuid ,msgto ,subject , message ,instantly=1,replypmid=0,isusername=0,type=0):
         pass
 
-    @baseapi.decorator()
+    @BaseApi.decorator()
     def uc_pm_ls(self, uid, page=1, pagesize=10, folder='inbox', filter='newpm', msglen=0):
         pass

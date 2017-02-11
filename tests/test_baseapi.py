@@ -8,7 +8,7 @@ from ucenter_api.clients import *
 
 class TestBaseapi(TestCase):
     def setUp(self):
-        self.api=baseapi()
+        self.api=BaseApi()
     def test_post(self):
         result=self.api.post('app','ls')
         print(json.dumps( xmltodict.parse(result)["root"]))

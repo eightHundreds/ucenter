@@ -10,7 +10,7 @@ from ucenter_api.clients import *
 
 class TestUserapi(TestCase):
     def setUp(self):
-        self.api = userapi()
+        self.api = UserApi()
 
     # @unittest.skip('用户注册,用过一次除非参数修改不能再用了')
     def test_uc_user_register(self):

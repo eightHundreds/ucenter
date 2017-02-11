@@ -2,7 +2,7 @@ import base64
 import hashlib
 from datetime import datetime
 
-from ucenter_api.config import Config
+from . import Config
 
 
 class Util():
