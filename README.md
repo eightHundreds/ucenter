@@ -8,7 +8,7 @@ Ucenter是一个独立的用户中心，详情自行百度，谷歌。
 
 
 
-下面是个简单的介绍ucenter单点登录流程的时序图
+下面是个简单的介绍ucenter单点登录流程的时序图(github 的Markdown不支持时序图,想看自行找工具,然后复制粘贴即可)
 
 ``` sequence
 participant website_A
@@ -45,6 +45,10 @@ api.uc_get_user('username')
 ```
 
 
+
+**项目依赖**
+
+- xmltodict
 
 
 
