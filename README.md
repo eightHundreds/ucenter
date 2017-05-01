@@ -66,7 +66,7 @@ ucenter的应用模块是先分`module` 再分`action` ,在对ucenter的请求�
 
 
 
-所以我在baseapi中写了个装饰器`def decorator(is_parse=True)`,使用举例:
+正因为这样的规律,我在baseapi中写了个装饰器`def decorator(is_parse=True)`,使用举例:
 
 ``` python
 @baseapi.decorator(False)
@@ -79,7 +79,7 @@ def uc_user_synlogin(self,uid):
     pass
 ```
 
-装饰器的参数表示是否解析响应为dict格式(有些响应结果只是个整数).就这样就完成了一个简单的接口.
+装饰器的参数表示是否解析响应为dict格式(有些响应结果只是个整数).就这样就完成了一个简单的接口,不需要在函数内写任何代码,直接嗲用.
 
 但用这种方式写的接口返回数据格式并不好看,所以通常用在响应结果是个整数或偷懒的时候.
 
